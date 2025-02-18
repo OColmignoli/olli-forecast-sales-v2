@@ -1,0 +1,16 @@
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# @OColmignoli will be requested for review when someone 
+# opens a pull request.
+*       @OColmignoli
+
+# ML Model files
+/src/models/       @OColmignoli
+/src/training/     @OColmignoli
+
+# Data processing
+/src/data/         @OColmignoli
+
+# CI/CD and Infrastructure
+/.github/          @OColmignoli
+/infrastructure/   @OColmignoli
