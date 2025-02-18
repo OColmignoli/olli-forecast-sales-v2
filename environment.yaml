@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: forecast-env
+version: 2
+conda_file: conda.yaml
+image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+description: Environment for sales forecasting with Prophet and Azure ML dependencies

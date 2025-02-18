@@ -1,0 +1,24 @@
+name: sales_forecast_training
+type: command
+display_name: Sales Forecast Training
+version: 1
+
+code: ./train_src
+
+environment: azureml:forecast-env:1
+
+inputs:
+  input_data:
+    type: uri_folder
+    description: Input sales history data
+    optional: false
+
+outputs:
+  model_output:
+    type: uri_folder
+    description: Output directory for trained model and forecasts
+
+command: >-
+  python train.py 
+  --input_data ${{inputs.input_data}} 
+  --output_dir ${{outputs.model_output}}

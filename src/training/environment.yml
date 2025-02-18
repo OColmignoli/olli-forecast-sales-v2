@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/environment.schema.json
+name: forecast-env
+version: 6
+description: Environment for sales forecasting with Prophet
+image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+conda_file: 
+  name: forecast-env
+  channels:
+    - conda-forge
+    - defaults
+  dependencies:
+    - python=3.8
+    - pip=21.2.4
+    - pandas=1.5.3
+    - numpy=1.24.3
+    - pip:
+        - azureml-core==1.53.0
+        - azureml-dataset-runtime==1.53.0
+        - prophet==1.1.4
+        - fsspec==2023.9.2
+        - adlfs==2023.9.0
+        - azure-storage-blob==12.18.3
+        - mlflow==2.8.1
+        - plotly==5.18.0
+        - mltable==1.5.0

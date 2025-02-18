@@ -1,0 +1,36 @@
+azure:
+  subscription_id: "c828c783-7a28-48f4-b56f-a6c189437d77"
+  resource_group: "OLLI-resource"
+  workspace_name: "OLLI_ML_Forecast"
+  region: "westus2"
+
+compute:
+  instance_type: "Standard_DS3_v2"
+  min_instances: 0
+  max_instances: 2
+  cpu_cores: 2
+  memory_gb: 8
+
+deployment:
+  endpoint_name: "sales-forecast-endpoint-dev"
+  app_insights_enabled: true
+  auth_enabled: true
+  ssl_enabled: true
+  enable_gpu: false
+  deployment_type: "AzureML"  # or "Local"
+  model_name_prefix: "sales-forecast"
+  model_version_strategy: "latest"  # or "specific"
+  request_timeout: 60
+  max_concurrent_requests: 4
+
+monitoring:
+  enable_data_drift: true
+  enable_model_monitoring: true
+  alert_email: "admin@example.com"
+  metrics_retention_days: 90
+  log_level: "INFO"
+  sampling_rate: 1.0  # 100% sampling
+  performance_alert_threshold:
+    latency_ms: 1000
+    error_rate: 0.01
+  data_drift_threshold: 0.1

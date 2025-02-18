@@ -1,0 +1,17 @@
+name: forecast-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pip=21.2.4
+  - pip:
+    - azureml-core
+    - azureml-dataset-runtime
+    - pandas
+    - numpy
+    - prophet
+    - fsspec
+    - adlfs  # For Azure Data Lake Storage support
+    - azure-storage-blob  # For Azure Blob Storage support
+    - mlflow

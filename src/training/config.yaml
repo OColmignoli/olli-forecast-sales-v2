@@ -1,0 +1,22 @@
+training:
+  forecast_horizon: 13  # weeks to forecast
+  validation_weeks: 4   # weeks to use for validation
+  seasonality:
+    yearly: true
+    weekly: true
+    daily: false
+  model_params:
+    seasonality_mode: 'multiplicative'
+    changepoint_prior_scale: 0.05
+    seasonality_prior_scale: 10.0
+
+data:
+  target_column: 'Volume'
+  date_columns:
+    - 'Transaction Year'
+    - 'Transaction Week'
+  metrics:
+    - 'CV Gross Sales'
+    - 'CV Net Sales'
+    - 'CV COGS'
+    - 'CV Gross Profit'

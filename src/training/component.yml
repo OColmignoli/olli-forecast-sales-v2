@@ -1,0 +1,25 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: sales_forecast_training
+version: "1.0.16"
+type: command
+display_name: Sales Forecast Training
+description: Train a sales forecasting model using Prophet
+
+command: >-
+  python train.py 
+  --input_data ${{inputs.input_data}} 
+  --output_dir ${{outputs.model_output}}
+
+environment: azureml:forecast-env:6
+code: ./train_src
+
+inputs:
+  input_data:
+    type: uri_file
+    description: Input sales history data in CSV format
+    optional: false
+
+outputs:
+  model_output:
+    type: uri_folder
+    description: Output directory for trained model and forecasts

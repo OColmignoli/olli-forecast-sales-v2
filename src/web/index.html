@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLLI Sales Forecast Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="assets/olli-logo.svg" alt="Olli Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#dashboard">Dashboard</a>
+            <a href="#upload">Upload Data</a>
+            <a href="#forecast">Forecasts</a>
+            <a href="#models">Models</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="dashboard" class="dashboard-container">
+            <h1>Sales Forecast Dashboard</h1>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3>Weekly Forecast</h3>
+                    <div id="weeklyForecastChart" class="chart"></div>
+                </div>
+                <div class="metric-card">
+                    <h3>Model Performance</h3>
+                    <div id="modelPerformanceChart" class="chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="upload" class="upload-section">
+            <h2>Upload Sales Data</h2>
+            <div class="upload-container">
+                <div class="file-upload">
+                    <input type="file" id="salesData" accept=".csv">
+                    <label for="salesData">Choose CSV file</label>
+                </div>
+                <button class="btn-primary">Upload and Process</button>
+            </div>
+        </section>
+
+        <section id="forecast" class="forecast-section">
+            <h2>Forecast Results</h2>
+            <div class="forecast-controls">
+                <select id="modelSelector">
+                    <option value="ensemble">Ensemble (All Models)</option>
+                    <option value="lstm">LSTM</option>
+                    <option value="transformer">Transformer (TFT)</option>
+                    <option value="deepar">DeepAR+</option>
+                    <option value="cnn">CNN</option>
+                    <option value="prophet">Prophet</option>
+                </select>
+                <button class="btn-secondary">Export to Excel</button>
+            </div>
+            <div id="forecastResults" class="results-grid"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 OLLI Salumeria Americana LLC</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

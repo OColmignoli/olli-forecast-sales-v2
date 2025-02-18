@@ -1,0 +1,12 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+display_name: Sales Forecast Pipeline V4
+experiment_name: Sales_Forecast_V7
+
+jobs:
+  sales_forecast_training:
+    type: command
+    component: azureml:sales_forecast_training:1.0.16
+    compute: azureml:forecast-cpu-cluster
+    inputs:
+      input_data: azureml:sales_history_v1:1

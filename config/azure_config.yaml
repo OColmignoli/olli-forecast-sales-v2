@@ -1,0 +1,35 @@
+workspace:
+  name: olli-forecast-ml
+  resource_group: olli-forecast-rg
+  location: westus2
+  storage_account: olliforecastml250140494
+  key_vault: olliforecastml242054912
+  app_insights: olliforecastml2446415977
+
+compute:
+  cpu_cluster:
+    vm_size: STANDARD_DS3_V2
+    min_nodes: 0
+    max_nodes: 4
+    idle_seconds_before_scaledown: 1800
+
+  gpu_cluster:
+    vm_size: STANDARD_NC6
+    min_nodes: 0
+    max_nodes: 2
+    idle_seconds_before_scaledown: 1800
+
+endpoints:
+  batch:
+    name: forecast-batch
+    vm_size: STANDARD_DS3_V2
+    autoscale_enabled: true
+    min_replicas: 1
+    max_replicas: 3
+
+  realtime:
+    name: forecast-realtime
+    vm_size: STANDARD_DS3_V2
+    autoscale_enabled: true
+    min_replicas: 1
+    max_replicas: 3

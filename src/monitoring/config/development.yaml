@@ -1,0 +1,80 @@
+app_insights:
+  connection_string: ""  # Set via environment variable
+  instrumentation_key: ""  # Set via environment variable
+  sampling_rate: 1.0
+  request_timeout: 30
+
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  date_format: '%Y-%m-%d %H:%M:%S'
+  file:
+    enabled: true
+    path: logs
+    max_size_mb: 100
+    backup_count: 5
+  console:
+    enabled: true
+  app_insights:
+    enabled: true
+  mlflow:
+    enabled: true
+
+model_monitoring:
+  metrics:
+    - name: prediction_latency
+      threshold: 1000  # milliseconds
+      window: 300  # seconds
+    - name: prediction_error_rate
+      threshold: 0.01
+      window: 3600
+    - name: data_drift_score
+      threshold: 0.1
+      window: 86400
+  performance:
+    track_memory: true
+    track_cpu: true
+    track_gpu: true
+    sampling_interval: 60  # seconds
+  data_drift:
+    enabled: true
+    check_interval: 3600  # seconds
+    reference_window: 604800  # 7 days
+    features_to_monitor: ["Volume", "CV Gross Sales", "CV Net Sales"]
+
+resource_monitoring:
+  metrics:
+    - name: cpu_usage
+      threshold: 80  # percentage
+      window: 300
+    - name: memory_usage
+      threshold: 80  # percentage
+      window: 300
+    - name: disk_usage
+      threshold: 80  # percentage
+      window: 300
+    - name: gpu_usage
+      threshold: 80  # percentage
+      window: 300
+  sampling_interval: 60  # seconds
+  retention_days: 30
+
+alerts:
+  email:
+    enabled: true
+    recipients: ["admin@example.com"]
+  slack:
+    enabled: false
+    webhook_url: ""
+    channel: "#monitoring"
+  severity_levels:
+    - name: critical
+      threshold: 0.9
+      notification_channels: ["email", "slack"]
+    - name: warning
+      threshold: 0.7
+      notification_channels: ["email"]
+    - name: info
+      threshold: 0.5
+      notification_channels: ["slack"]
+  cooldown_period: 300  # seconds between repeated alerts
